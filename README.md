@@ -18,8 +18,8 @@ Run the following command:
 ## Run the program
 The following commands ara available:  
   
-`php calculate.php` - prints the first 10 prime numbers  
-`php calculate.php N` - prints the first N prime numbers, where N is a number
+`php calculate.php` - prints a multiplication table of the first 10 prime numbers  
+`php calculate.php N` - prints a multiplication table of the first N prime numbers, where N is a number
 
 ## Run the Unit tests
 
