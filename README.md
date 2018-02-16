@@ -10,6 +10,9 @@ The following rows represent the multiplication table - each cell contains the p
 ## Requirements
 PHP 7.1+
 
+## Installation & Runing of the application
+The sections below contain CLI commands that require that you have scrolled to the directory of the project and you have the `php` available as a command in the CLI
+
 ## Installation
 Run the following command: 
  
