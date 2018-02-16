@@ -6,6 +6,10 @@ This is a console application that prints out a multiplication table of the firs
 The first row prints out the prime numbers.
   
 The following rows represent the multiplication table - each cell contains the product of the primes for the corresponding row and column.  
+
+## Algorithm efficiency
+
+The program implements the "Trial division" computational method as described in [Wikipedia](https://en.wikipedia.org/wiki/Prime_number#Trial_division). This method is good for testing small numbers, but if used with large numbers the number of tests that it performs grows exponentially which makes it slow and inefficient. 
   
 ## Requirements
 PHP 7.1+
