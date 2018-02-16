@@ -5,7 +5,7 @@ if (isset($argv[1]) && !is_numeric($argv[1])) {
     exit('The parameter passed should be a number'.PHP_EOL);
 }
 
-$numOfPrimes = (int)$argv[1] ?? 10; // either 10 or the first argument passed to the terminal after the script name
+$numOfPrimes = $argv[1] ?? 10; // either 10 or the first argument passed to the terminal after the script name
 
 try {
     $primes = new \Classes\PrimesConsole($numOfPrimes);
