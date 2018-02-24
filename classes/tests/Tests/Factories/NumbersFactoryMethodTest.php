@@ -2,8 +2,9 @@
 
 namespace Tests\Factories;
 
-use Classes\Contracts\NumbersInterface;
 use Classes\Factories\NumbersFactoryMethod;
+use Classes\Fibonacci;
+use Classes\Primes;
 use PHPUnit\Framework\TestCase;
 
 class NumbersFactoryMethodTest extends TestCase
@@ -15,6 +16,16 @@ class NumbersFactoryMethodTest extends TestCase
     {
         $numbers = NumbersFactoryMethod::makeNumbers(1, 10);
 
-        $this->assertInstanceOf(NumbersInterface::class, $numbers);
+        $this->assertInstanceOf(Primes::class, $numbers);
+    }
+
+    /**
+     * @throws \Exception
+     */
+    public function testReturnsFibonacciInstance()
+    {
+        $numbers = NumbersFactoryMethod::makeNumbers(2, 10);
+
+        $this->assertInstanceOf(Fibonacci::class, $numbers);
     }
 }

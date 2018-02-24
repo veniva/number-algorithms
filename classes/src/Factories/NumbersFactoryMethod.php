@@ -3,6 +3,7 @@
 namespace Classes\Factories;
 
 use Classes\Contracts\NumbersInterface;
+use Classes\Fibonacci;
 use Classes\Primes;
 
 class NumbersFactoryMethod
@@ -19,6 +20,9 @@ class NumbersFactoryMethod
         switch($opCode) {
             case 1:
                 $class = new Primes($numbersCount);
+                break;
+            case 2:
+                $class = new Fibonacci($numbersCount);
                 break;
         }
 

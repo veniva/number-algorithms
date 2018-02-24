@@ -9,7 +9,7 @@ use PHPUnit\Framework\TestCase;
 class MethodFindPrimesTest extends TestCase
 {
     /**
-     * @var MockObject
+     * @var MockObject|Primes
      */
     protected $primes = null;
 
@@ -20,6 +20,9 @@ class MethodFindPrimesTest extends TestCase
             ->setMethods(['isPrimeNumber', 'calculatePadding'])->getMock();
     }
 
+    /**
+     * @throws \Exception
+     */
     public function testCalculatePaddingCalled()
     {
         $this->primes->method('isPrimeNumber')->willReturn(true);
@@ -27,7 +30,10 @@ class MethodFindPrimesTest extends TestCase
         $this->primes->findNumbers();
     }
 
-    public function testPrimesFoundArrayFilledIn()
+    /**
+     * @throws \Exception
+     */
+    public function testNumbersFoundArrayFilledIn()
     {
         $this->primes->method('isPrimeNumber')->willReturn(true);
         $this->primes->setNumbersCount(10);
@@ -36,6 +42,9 @@ class MethodFindPrimesTest extends TestCase
         $this->assertTrue(count($this->primes->getNumbersFound()) === 10);
     }
 
+    /**
+     * @throws \Exception
+     */
     public function testMethodIsPrimeNumberCalled()
     {
         $this->primes->setNumbersCount(10);
@@ -45,6 +54,9 @@ class MethodFindPrimesTest extends TestCase
         $this->primes->findNumbers();
     }
 
+    /**
+     * @throws \Exception
+     */
     public function testThrowsException()
     {
         $this->primes->method('isPrimeNumber')->willReturn(false);

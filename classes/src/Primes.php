@@ -2,30 +2,11 @@
 
 namespace Classes;
 
-use Classes\Contracts\NumbersInterface;
 use Classes\Contracts\PrimeNumberInterface;
 
-class Primes implements NumbersInterface, PrimeNumberInterface
+class Primes extends AbstractNumbers implements PrimeNumberInterface
 {
-    protected $pad = 0;
-
     protected $numbersFound = [2];
-    protected $numbersCount; // how many numbers have been found
-
-    /**
-     * Primes constructor.
-     * @param int $numOfPrimes The number of primes to find
-     * @param bool $calculateOnInit Whether to calculate the primes during the class initialization
-     * @throws \Exception
-     */
-    public function __construct(int $numOfPrimes = 10, $calculateOnInit = true)
-    {
-        $this->numbersCount = $numOfPrimes;
-
-        if ($calculateOnInit) {
-            $this->findNumbers();
-        }
-    }
 
     /**
      * Find the given number ($this->numOfPrimes) of primes
@@ -49,16 +30,6 @@ class Primes implements NumbersInterface, PrimeNumberInterface
         }
 
         $this->calculatePadding($this->numbersFound);
-    }
-
-    /**
-     * Find the length of digits of the maximum prime number we found
-     * @param array $primesFound
-     */
-    public function calculatePadding(array $primesFound)
-    {
-        $max = max($primesFound);
-        $this->pad = strlen((string)(pow($max, 2)));
     }
 
     /**
@@ -95,15 +66,5 @@ class Primes implements NumbersInterface, PrimeNumberInterface
     {
         $this->numbersFound = [2];
         $this->numbersCount = $num;
-    }
-
-    public function getNumbersFound(): array
-    {
-        return $this->numbersFound;
-    }
-
-    public function getPadding(): int
-    {
-        return $this->pad;
     }
 }
