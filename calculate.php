@@ -1,27 +1,44 @@
 <?php
+
+use Classes\Factories\NumbersFactoryMethod;
+use Classes\Factories\OutputFactoryMethod;
+use Classes\Init;
+
 require 'vendor/autoload.php';
 $start = microtime(true);
-if (isset($argv[1]) && !is_numeric($argv[1])) {
-    exit('The parameter passed should be a number'.PHP_EOL);
+
+/* Input Arguments
+ eg. usages:
+ "php ./calculate.php 12"       - will calculate 12 prime numbers and will output the content to the console
+ "php ./calculate.php 10 1 1"   - will calculate 10 prime numbers and will write the table to the console
+ "php ./calculate.php 10 1 2"   - will calculate 10 prime numbers and will write the table in a file
+ "php ./calculate.php 300 1 1"  - will calculate 300 prime numbers and will write the table in a file regardless of third param
+*/
+
+if(($code = Init::checkInput($argv)) > 0) {
+    exit("The parameter number $code should be a number".PHP_EOL);
 }
 
-$numOfPrimes = $argv[1] ?? 10; // either 10 or the first argument passed to the terminal after the script name
+Init::calculateParameters($argv);
+
+$operation = null;
+$output = null;
+$outputFactory = new OutputFactoryMethod();
 
 try {
-    $primes = new \Classes\PrimesConsole($numOfPrimes);
+    $operation = NumbersFactoryMethod::makeNumbers((int)Init::$opCode, (int)Init::$numbersCount);
+    $output = $outputFactory->makeOutputClass($operation, (int)Init::$outputMethod, (int)Init::$numbersCount);
 
-    // print the first row - the prime numbers
-    echo $primes->firstRow();
-
-    echo PHP_EOL;
-
-    echo $primes->tableGrid();
-
-    echo PHP_EOL;
-
-} catch (Exception $e) {
+} catch(\Exception $e) {
     echo $e->getMessage().PHP_EOL;
 }
 
+echo $output->getTHead();
+echo $output->getTBody();
+
+
+
 echo 'Execution time: '.(microtime(true) - $start). ' sec';
+echo PHP_EOL;
+echo "real: ".(memory_get_peak_usage(true)/1024/1024)." MiB\n\n";
 echo PHP_EOL;

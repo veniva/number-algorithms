@@ -18,38 +18,39 @@ class MethodFindPrimesTest extends TestCase
         $this->primes = $this->getMockBuilder(Primes::class)
             ->disableOriginalConstructor()
             ->setMethods(['isPrimeNumber', 'calculatePadding'])->getMock();
-
-
     }
 
     public function testCalculatePaddingCalled()
     {
         $this->primes->method('isPrimeNumber')->willReturn(true);
         $this->primes->expects($this->once())->method('calculatePadding');
-        $this->primes->findPrimes();
+        $this->primes->findNumbers();
     }
 
     public function testPrimesFoundArrayFilledIn()
     {
         $this->primes->method('isPrimeNumber')->willReturn(true);
-        $this->primes->findPrimes();
+        $this->primes->setNumbersCount(10);
+        $this->primes->findNumbers();
 
-        $this->assertTrue(count($this->primes->getPrimesFound()) === 10);
+        $this->assertTrue(count($this->primes->getNumbersFound()) === 10);
     }
 
     public function testMethodIsPrimeNumberCalled()
     {
+        $this->primes->setNumbersCount(10);
         $this->primes->method('isPrimeNumber')->willReturn(true);
         $this->primes->expects($this->exactly(9))->method('isPrimeNumber');
 
-        $this->primes->findPrimes();
+        $this->primes->findNumbers();
     }
 
     public function testThrowsException()
     {
         $this->primes->method('isPrimeNumber')->willReturn(false);
         $this->expectException(\Exception::class);
-        $this->primes->findPrimes();
+        $this->primes->setNumbersCount(10);
+        $this->primes->findNumbers();
 
     }
 }

@@ -2,14 +2,15 @@
 
 namespace Classes;
 
-use Classes\Contracts\PrimesInterface;
+use Classes\Contracts\NumbersInterface;
+use Classes\Contracts\PrimeNumberInterface;
 
-class Primes implements PrimesInterface
+class Primes implements NumbersInterface, PrimeNumberInterface
 {
     protected $pad = 0;
 
-    protected $primesFound = [2];
-    protected $numOfPrimes = 10;
+    protected $numbersFound = [2];
+    protected $numbersCount; // how many numbers have been found
 
     /**
      * Primes constructor.
@@ -17,12 +18,12 @@ class Primes implements PrimesInterface
      * @param bool $calculateOnInit Whether to calculate the primes during the class initialization
      * @throws \Exception
      */
-    public function __construct(int $numOfPrimes, $calculateOnInit = true)
+    public function __construct(int $numOfPrimes = 10, $calculateOnInit = true)
     {
-        $this->numOfPrimes = $numOfPrimes;
+        $this->numbersCount = $numOfPrimes;
 
         if ($calculateOnInit) {
-            $this->findPrimes();
+            $this->findNumbers();
         }
     }
 
@@ -31,23 +32,23 @@ class Primes implements PrimesInterface
      * Call the padding calculate method
      * @throws \Exception
      */
-    public function findPrimes()
+    public function findNumbers()
     {
         $n = 3;
-        while (count($this->primesFound) < $this->numOfPrimes) {
-            if ($this->isPrimeNumber($n, $this->primesFound)) {
-                array_push($this->primesFound, $n);
+        while (count($this->numbersFound) < $this->numbersCount) {
+            if ($this->isPrimeNumber($n, $this->numbersFound)) {
+                array_push($this->numbersFound, $n);
             }
 
             // protect against infinite loop in certain situations
-            if ($n === 29 && count($this->primesFound) !== 10) {
+            if ($n === 29 && count($this->numbersFound) !== 10) {
                 throw new \Exception('Something strange is happening!');
             }
 
             $n++;
         }
 
-        $this->calculatePadding($this->primesFound);
+        $this->calculatePadding($this->numbersFound);
     }
 
     /**
@@ -90,14 +91,15 @@ class Primes implements PrimesInterface
         return true;
     }
 
-    public function setNumOfPrimes(int $num)
+    public function setNumbersCount(int $num)
     {
-        $this->numOfPrimes = $num;
+        $this->numbersFound = [2];
+        $this->numbersCount = $num;
     }
 
-    public function getPrimesFound(): array
+    public function getNumbersFound(): array
     {
-        return $this->primesFound;
+        return $this->numbersFound;
     }
 
     public function getPadding(): int
