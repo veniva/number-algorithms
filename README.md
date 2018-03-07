@@ -18,13 +18,21 @@ Implementing a dynamic programming method. It's relatively fast with time comple
 ## Requirements
 PHP 7.1+
 
-## Installation & Runing of the application
-The sections below contain CLI commands that require that you have scrolled to the directory of the project and you have the `php` available as a command in the CLI
-
 ## Installation
+Use either Option 1 or Option 2  
+### Option 1 - CLI
+This option requires that you have scrolled to the directory of the project on the CLI and you have the php7.1+ available as `php` command in the CLI  
 Run the following command: 
  
  `php composer.phar install`
+ 
+### Option 2 - Docker
+This option requires that you have installed Docker on your system  
+Run the following commands: 
+  
+`docker-compose up --no-start`  
+`docker start num-algs`  
+`docker exec -it num-algs /bin/bash`
   
 ## Run the program
 The following commands ara available:  
@@ -42,3 +50,8 @@ Examples:
 ## Run the Unit tests
 
 `php vendor/bin/phpunit`
+
+## Notes
+If you use docker and run a command that saves the output in a file, you can see the content of the file running the following command:  
+`cat data/numbers-calculated.txt`  
+Just be aware that it's not recommended to use it if the file is too large!

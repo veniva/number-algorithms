@@ -40,5 +40,5 @@ echo $output->getTBody();
 
 echo 'Execution time: '.(microtime(true) - $start). ' sec';
 echo PHP_EOL;
-echo "real: ".(memory_get_peak_usage(true)/1024/1024)." MiB\n\n";
+echo "Memory peak: ".(memory_get_peak_usage(true)/1024/1024)." MiB\n\n";
 echo PHP_EOL;
