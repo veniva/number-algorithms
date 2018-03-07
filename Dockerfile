@@ -7,7 +7,6 @@ WORKDIR /var/www
 
 RUN php composer.phar install
 
-EXPOSE 3000
 
 
 
