@@ -10,7 +10,7 @@ RUN apt-get update && \
         apt-get install -y --no-install-recommends \
             libzip-dev \
             git
-RUN pecl install zip
+RUN pecl install zip && docker-php-ext-enable zip
 RUN php composer.phar install
 
 

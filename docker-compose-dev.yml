@@ -1,0 +1,13 @@
+version: '3'
+
+services:
+  php:
+    image: veniva/php-num-algs-dev
+    container_name: num-algs-dev
+    build:
+      context: .
+      dockerfile: dev.dockerfile
+    volumes:
+      - .:/var/www
+    stdin_open: true
+    tty: true
