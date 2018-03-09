@@ -32,10 +32,10 @@ Run the following commands:
   
 `docker-compose up --no-start`  
 `docker start num-algs`  
-`docker exec -it num-algs /bin/bash`
+`docker exec -it num-algs bash` - this will open a bash terminal on the running container
   
 ## Run the program
-The following commands ara available:  
+The following commands ara available on the CLI:  
   
 `php calculate.php [N] [O] [M]` - there are 3 optional parameters where:   
 `N` is the number of numbers to be calculated (default is 10),  
@@ -52,6 +52,4 @@ Examples:
 `php vendor/bin/phpunit`
 
 ## Notes
-If you use docker and run a command that saves the output in a file, you can see the content of the file running the following command:  
-`cat data/numbers-calculated.txt`  
-Just be aware that it's not recommended to use it if the file is too large!
+If you run a command that saves the output in a file, you can see the result in file `data/numbers-calculated.txt`.
