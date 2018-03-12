@@ -7,6 +7,11 @@ use Classes\Output\ToConsole;
 use Classes\Output\ToConsoleSequence;
 use Classes\Output\ToFile;
 
+/**
+ * Creates an output object of type Table
+ * Class OutputFactoryMethod
+ * @package Classes\Factories
+ */
 class OutputFactoryMethod
 {
     /**

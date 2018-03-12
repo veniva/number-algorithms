@@ -6,6 +6,11 @@ use Classes\Contracts\NumbersInterface;
 use Classes\Fibonacci;
 use Classes\Primes;
 
+/**
+ * Choose which class implementing NumbersInterface to create based on the user input on the console
+ * Class NumbersFactoryMethod
+ * @package Classes\Factories
+ */
 class NumbersFactoryMethod
 {
     /**
