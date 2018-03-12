@@ -3,7 +3,7 @@
 
 ## Description
 This is a console application that prints out a multiplication table of number sequence calculated by different algorithms. 
-Currently if implements the prime numbers and fibonacci numbers algorithms.  
+Currently it implements the prime numbers and fibonacci numbers algorithms.  
   
 The first row prints out the prime or fibonacci numbers.
   
