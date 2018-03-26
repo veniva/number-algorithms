@@ -27,7 +27,7 @@ $outputFactory = new OutputFactoryMethod();
 
 try {
     $operation = NumbersFactoryMethod::makeNumbers((int)Init::$opCode, (int)Init::$numbersCount);
-    $output = $outputFactory->makeOutputClass($operation, (int)Init::$outputMethod, (int)Init::$numbersCount);
+    $output = $outputFactory->makeOutput($operation, (int)Init::$outputMethod, (int)Init::$numbersCount);
 
 } catch(\Exception $e) {
     echo $e->getMessage().PHP_EOL;

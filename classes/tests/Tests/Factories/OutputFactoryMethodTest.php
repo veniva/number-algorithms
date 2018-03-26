@@ -32,7 +32,7 @@ class OutputFactoryMethodTest extends TestCase
         $numbersCount = 10;
         $numbers = NumbersFactoryMethod::makeNumbers(1, $numbersCount);
         // output = 1 - to console;
-        $outputClass = $this->factory->makeOutputClass($numbers, 1, $numbersCount);
+        $outputClass = $this->factory->makeOutput($numbers, 1, $numbersCount);
 
         $this->assertInstanceOf(ToConsole::class, $outputClass);
     }
@@ -45,7 +45,7 @@ class OutputFactoryMethodTest extends TestCase
         $numbersCount = 100;
         $numbers = NumbersFactoryMethod::makeNumbers(1, $numbersCount);
         // output = 1 - to console;
-        $outputClass = $this->factory->makeOutputClass($numbers, 1, $numbersCount);
+        $outputClass = $this->factory->makeOutput($numbers, 1, $numbersCount);
 
         $this->assertInstanceOf(ToConsoleSequence::class, $outputClass);
     }
@@ -61,7 +61,7 @@ class OutputFactoryMethodTest extends TestCase
         $this->factory->expects($this->once())->method('newToFile');
 
         // output = 2 - to file;
-        $this->factory->makeOutputClass($numbers, 2, $numbersCount);
+        $this->factory->makeOutput($numbers, 2, $numbersCount);
     }
 
     /**
@@ -77,7 +77,7 @@ class OutputFactoryMethodTest extends TestCase
         $this->factory->expects($this->once())->method('newToFile');
 
         // output chose in cli = 1 - to console;
-        $this->factory->makeOutputClass($numbers, 1, $numbersCount);
+        $this->factory->makeOutput($numbers, 1, $numbersCount);
     }
 
 }

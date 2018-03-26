@@ -21,7 +21,7 @@ class OutputFactoryMethod
      * @return ToConsole|ToConsoleSequence|ToFile|null
      * @throws \Exception
      */
-    public function makeOutputClass(NumbersInterface $numbers, int $outputMethod, int $numbersCount)
+    public function makeOutput(NumbersInterface $numbers, int $outputMethod, int $numbersCount)
     {
         $output = null;
         switch($numbersCount < 300) { // if we have to calculate more than 300 numbers the write the output to file in all the cases
